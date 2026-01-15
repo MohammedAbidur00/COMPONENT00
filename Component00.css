@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: white;
+}
+
+.Main-Wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: monospace;
+}
+
+.Header-Nav {
+    display: flex;
+    height: fit-content;
+    background-color: white;
+    position: fixed;
+    width: 100vw;
+    align-items: center;
+    border-bottom: black 3px solid;
+}
+
+.First-Half h1 {
+    color: black;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+    border-radius: 3px;
+    font-size: 25px;
+}
+
+.Main-Content-Wrapper {
+    margin-top: 50px;
+}
+
+.Minifigure-Section {
+    margin: 20px;
+    padding: 20px;
+    border: black 3px solid;
+    border-radius: 7px;
+    background-color: white;
+}
+
+.Minifigures {
+    border: black 3px solid;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.Minifigure {
+    background-color: transparent;
+    text-align: center;
+    border: black 3px solid;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.StartingOnes {
+    margin-top: 0;
+}
+
+.Minifigure p {
+    align-items: center;
+    padding: 8px;
+}
+
+.Section-Title {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.Minifigure-Img {
+    border-bottom: black 3px solid;
+    width: 110px;
+}
+
+.Show-More-Btn {
+    margin-top: 10px;
+    width: 100%;
+    border: black 3px solid;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: white;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.Hide {
+    display: none;
+}
+
+.Show {
+    display: block;
+}
