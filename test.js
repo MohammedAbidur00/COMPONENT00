@@ -81,27 +81,3 @@ const ArrayImgThree = ["MF1", "MF2", "MF3", "MF4"];
 const SetOne = new SetSection("SET ONE", ArrayImgOne);
 const SetTwo = new SetSection("SET TWO", ArrayImgTwo);
 const SetThree = new SetSection("SET THREE", ArrayImgThree);
-
-//MINIFIGURE RELATED
-let showMoreBtn = document.getElementById("ShowMoreBtn");
-let minifigures = document.querySelectorAll(".Minifigure");
-let minifigureImgs = document.querySelectorAll(".Minifigure-Img");
-let Hidden = true;
-
-showMoreBtn.addEventListener("click", () => {
-    document.querySelectorAll(".Hide").forEach(m => {
-        m.classList.toggle("Show");
-    });
-    changeText();
-});
-
-function changeText() {
-    if (!Hidden) {
-        showMoreBtn.innerText = "HIDE";
-    } else {
-        showMoreBtn.innerText = "SHOW MORE";
-    }
-    Hidden = !Hidden;
-}
-
-changeText()

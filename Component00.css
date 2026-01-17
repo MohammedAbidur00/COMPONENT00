@@ -52,7 +52,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .Sets-Section {
@@ -189,4 +189,16 @@ body {
 
 .Hero-Container p {
     font-size: 18px;
+}
+
+.BG {
+    background-color: white;
+}
+
+.BR {
+    background-color: white;
+}
+
+.MF {
+    background-color: white;
 }
