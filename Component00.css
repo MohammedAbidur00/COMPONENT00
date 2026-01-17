@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 .Main-Wrapper {
@@ -40,12 +40,49 @@ body {
     margin-top: 50px;
 }
 
-.Minifigure-Section {
+.Section-Container {
     margin: 20px;
     padding: 20px;
     border: black 3px solid;
     border-radius: 7px;
     background-color: white;
+}
+
+.Sets-Section-Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Sets-Section {
+    border: black 3px solid;
+    border-radius: 7px;
+    padding: 10px;
+    width: fit-content;
+    text-align: center;
+    margin: 10px;
+}
+
+.Sets {
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.S {
+    margin-top: 20px;
+}
+
+.Set {
+    margin: 2px;
+}
+
+.Sets-Img {
+    border: black 3px solid;
+    width: 370px;
 }
 
 .Minifigures {
@@ -64,10 +101,13 @@ body {
     border: black 3px solid;
     font-weight: bold;
     margin-top: 5px;
+    cursor: pointer;
+    height: fit-content;
 }
 
 .StartingOnes {
     margin-top: 0;
+    display: block;
 }
 
 .Minifigure p {
@@ -102,4 +142,51 @@ body {
 
 .Show {
     display: block;
+}
+
+.Set-Btn {
+    width: 80px;
+    padding: 8px;
+    margin: 3px;
+    background-color: black;
+    border: black 3px solid;
+    border-radius: 3px;
+    color: white;
+    font-family: monospace;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.Set-Btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.Hero {
+    border: none;
+    margin-bottom: 0;
+    display: none;
+}
+
+.Welcome-Img {
+    width: 400px;
+}
+
+.Hero-Container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 150px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.Hero-Container h1 {
+    font-family: monospace;
+    font-size: 50px;
+}
+
+.Hero-Container p {
+    font-size: 18px;
 }
