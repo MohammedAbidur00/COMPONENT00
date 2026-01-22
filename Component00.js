@@ -68,19 +68,19 @@ class SetSection {
             } else {
                 this.NewSetImg.src = `assets/sets/${this.SetImagesSrc[this.count]}.jpg`;
             }
-        })
+        });
     }
 }
 
 //ARRAYS OF IMG NAMES
 const ArrayImgOne = ["GB1", "GB2", "GB3"];
-const ArrayImgTwo = ["RB1", "RB2", "RB3"];
-const ArrayImgThree = ["MF1", "MF2", "MF3", "MF4"];
+const ArrayImgTwo = ["HE1", "HE2"];
+const ArrayImgThree = ["TV1", "TV2", "TV3", "TV4"];
 
 //OBJECTS
 const SetOne = new SetSection("SET ONE", ArrayImgOne);
 const SetTwo = new SetSection("SET TWO", ArrayImgTwo);
-const SetThree = new SetSection("SET THREE", ArrayImgThree);
+const SetFive = new SetSection("SET THREE", ArrayImgThree);
 
 //MINIFIGURE RELATED
 let showMoreBtn = document.getElementById("ShowMoreBtn");
@@ -88,7 +88,7 @@ let minifigures = document.querySelectorAll(".Minifigure");
 let minifigureImgs = document.querySelectorAll(".Minifigure-Img");
 let Hidden = true;
 
-showMoreBtn.addEventListener("click", () => {
+/*showMoreBtn.addEventListener("click", () => {
     document.querySelectorAll(".Hide").forEach(m => {
         m.classList.toggle("Show");
     });
@@ -104,4 +104,4 @@ function changeText() {
     Hidden = !Hidden;
 }
 
-changeText()
+changeText()*/

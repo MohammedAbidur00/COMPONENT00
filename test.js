@@ -1,83 +1,228 @@
-class SetSection {
-    constructor(SetTitle, SetImagesSrc) {
-        this.SetTitle = SetTitle;
-        this.SetImagesSrc = SetImagesSrc;
+class MinifigureSection {
+    constructor(MinifigureTitle, MinifigureImgSrc) {
+        this.MinifigureTitle = [...MinifigureTitle];
+        this.MinifigureImgSrc = [...MinifigureImgSrc];
 
-        this.SetsSectionContainer = document.querySelector(".Sets-Section-Container");
-        this.count = 0;
+        this.takeToEnd = "";
+        this.takeToFront = "";
+
+        this.takeToEndTitle = "";
+        this.takeToFrontTitle = "";
+
+        this.start = 0;
+        this.end = 10;
+
+        this.MinifiguresViewerCon = document.querySelector(".Minifigure-Viewer-Container");
 
         //CONTAINERS
-        this.NewSetSectionCon = document.createElement("div");
-        this.NewSetTitleCon = document.createElement("div");
-        this.NewSetCon = document.createElement("div");
-        this.NewSetImgCon = document.createElement("div");
-        this.NewSetBtnsCon = document.createElement("div");
-        this.NewSetImg = document.createElement("img");
-        this.NewSetPrevBtn = document.createElement("button");
-        this.NewSetNextBtn = document.createElement("button");
-        this.NewSetTitle = document.createElement("h3");
+        this.MinifiguresViewer = document.createElement("div");
+        this.prevBtnCon = document.createElement("div");
+        this.Minifigures = document.createElement("div");
+        this.nextBtnCon = document.createElement("div");
+        this.prevBtn = document.createElement("button");
+        this.nextBtn = document.createElement("button");
 
         //APPENDING
-        this.SetsSectionContainer.appendChild(this.NewSetSectionCon);
-        this.NewSetSectionCon.appendChild(this.NewSetTitleCon);
-        this.NewSetSectionCon.appendChild(this.NewSetCon);
-        this.NewSetCon.appendChild(this.NewSetImgCon);
-        this.NewSetCon.appendChild(this.NewSetBtnsCon);
-        this.NewSetImgCon.appendChild(this.NewSetImg);
-        this.NewSetBtnsCon.appendChild(this.NewSetPrevBtn);
-        this.NewSetBtnsCon.appendChild(this.NewSetNextBtn);
-        this.NewSetTitleCon.appendChild(this.NewSetTitle);
+        this.MinifiguresViewerCon.appendChild(this.MinifiguresViewer);
+        this.MinifiguresViewer.appendChild(this.prevBtnCon);
+        this.MinifiguresViewer.appendChild(this.Minifigures);
+        this.MinifiguresViewer.appendChild(this.nextBtnCon);
+        this.prevBtnCon.appendChild(this.prevBtn);
+        this.nextBtnCon.appendChild(this.nextBtn);
 
-        //TOGGLING CLASSES
-        this.NewSetSectionCon.classList.toggle("Sets-Section");
-        this.NewSetTitleCon.classList.toggle("Section-Title");
-        this.NewSetTitleCon.classList.toggle("S");
-        this.NewSetCon.classList.toggle("Sets");
-        this.NewSetImgCon.classList.toggle("Set");
-        this.NewSetImg.classList.toggle("Sets-Img");
-        this.NewSetBtnsCon.classList.toggle("Set-Btns");
-        this.NewSetPrevBtn.classList.toggle("Set-Btn");
-        this.NewSetNextBtn.classList.toggle("Set-Btn");
+        //TOGGLING STYLES
+        this.MinifiguresViewer.classList.toggle("Minifigure-Viewer");
+        this.prevBtnCon.classList.toggle("Left-Tri-Con");
+        this.prevBtn.classList.toggle("Left-Tri");
+        this.Minifigures.classList.toggle("Minifigures");
+        this.nextBtnCon.classList.toggle("Right-Tri-Con");
+        this.nextBtn.classList.toggle("Right-Tri");
 
-        //TITLE RELATED
-        this.NewSetTitle.innerText = this.SetTitle;
+        this.Display(this.start, this.end, this.MinifigureImgSrc, this.MinifigureTitle);
 
-        //IMG RELATED
-        this.NewSetImg.src = `assets/sets/${this.SetImagesSrc[this.count]}.jpg`;
+        this.prev = document.querySelector(".Left-Tri");
+        this.next = document.querySelector(".Right-Tri");
 
-        //BUTTON RELATED
-        this.NewSetPrevBtn.innerText = "PREV";
-        this.NewSetNextBtn.innerText = "NEXT";
-
-        //BUTTON AND IMG RELATED
-        this.NewSetPrevBtn.addEventListener("click", () => {
-            this.count--;
-            if (this.count < 0) {
-                this.count = this.SetImagesSrc.length-1;
-                this.NewSetImg.src = `assets/sets/${this.SetImagesSrc[this.count]}.jpg`;
-            } else {
-                this.NewSetImg.src = `assets/sets/${this.SetImagesSrc[this.count]}.jpg`;
-            }
-        });
-
-        this.NewSetNextBtn.addEventListener("click", () => {
-            this.count++;
-            if (this.count > this.SetImagesSrc.length-1) {
-                this.count = 0;
-                this.NewSetImg.src = `assets/sets/${this.SetImagesSrc[this.count]}.jpg`;
-            } else {
-                this.NewSetImg.src = `assets/sets/${this.SetImagesSrc[this.count]}.jpg`;
-            }
+        this.next.addEventListener("click", () => {
+            this.takeToEnd = this.MinifigureImgSrc[0];
+            this.MinifigureImgSrc = this.MinifigureImgSrc.slice(1);
+            this.MinifigureImgSrc = [...this.MinifigureImgSrc, this.takeToEnd];
+            this.takeToEndTitle = this.MinifigureTitle[0];
+            this.MinifigureTitle = this.MinifigureTitle.slice(1);
+            this.MinifigureTitle = [...this.MinifigureTitle, this.takeToEndTitle];
+            this.Display(this.start, this.end, this.MinifigureImgSrc, this.MinifigureTitle);
         })
+
+        this.prev.addEventListener("click", () => {
+            this.takeToFront = this.MinifigureImgSrc[this.MinifigureImgSrc.length-1];
+            this.MinifigureImgSrc = [this.takeToFront, ...this.MinifigureImgSrc];
+            this.MinifigureImgSrc = this.MinifigureImgSrc.slice(0, -1);
+            this.takeToFrontTitle = this.MinifigureTitle[this.MinifigureTitle.length-1];
+            this.MinifigureTitle = [this.takeToFrontTitle, ...this.MinifigureTitle];
+            this.MinifigureTitle = this.MinifigureTitle.slice(0, -1);
+            this.Display(this.start, this.end, this.MinifigureImgSrc, this.MinifigureTitle);
+        })
+    }
+
+    Display(start, end, arrI, arrT) {
+        console.log("gh")
+        this.Minifigures = document.querySelector(".Minifigures");
+        this.Minifigures.innerText = "";
+        for (let x = start; x < end; x++) {
+            //CONTAINERS
+            this.NewMinifigureCon = document.createElement("div");
+            this.NewMinifigureImg = document.createElement("img");
+            this.NewMinifigureTitle = document.createElement("p");
+
+            //APPENDING
+            this.Minifigures.appendChild(this.NewMinifigureCon);
+            this.NewMinifigureCon.appendChild(this.NewMinifigureImg);
+            this.NewMinifigureCon.appendChild(this.NewMinifigureTitle);
+
+            //TOGGLING CLASSES
+            this.NewMinifigureCon.classList.toggle("Minifigure");
+            this.NewMinifigureCon.classList.toggle("StartingOnes");
+            this.NewMinifigureImg.classList.toggle("Minifigure-Img");
+
+            this.NewMinifigureTitle.innerText = arrT[x];
+            this.NewMinifigureImg.src = `assets/minifigures/${arrI[x]}.jpg`;
+        }
     }
 }
 
-//ARRAYS OF IMG NAMES
-const ArrayImgOne = ["GB1", "GB2", "GB3"];
-const ArrayImgTwo = ["RB1", "RB2", "RB3"];
-const ArrayImgThree = ["MF1", "MF2", "MF3", "MF4"];
+class CarouselSets {
+    constructor(InputArray, InputTitle) {
+        this.InputArray = InputArray;
+        this.InputTitle = InputTitle;
 
-//OBJECTS
-const SetOne = new SetSection("SET ONE", ArrayImgOne);
-const SetTwo = new SetSection("SET TWO", ArrayImgTwo);
-const SetThree = new SetSection("SET THREE", ArrayImgThree);
+        this.count = 0;
+
+        this.CarouselItemMaker();
+    }
+
+    CarouselItemMaker() {
+        this.SetsCarouselHolder = document.querySelector(".Sets-Carousel-Holder");
+
+        this.SetsCarouselCon = document.createElement("div");
+        this.SetsCarouselTitle = document.createElement("h3");
+        this.SetsCarouselImg = document.createElement("img");
+        this.SetsCarouselBtnsCon = document.createElement("div");
+        this.SetsCarouselPrevBtn = document.createElement("button");
+        this.SetsCarouselNextBtn = document.createElement("button");
+
+        this.SetsCarouselCon.classList.toggle("Sets-Carousel");
+        this.SetsCarouselImg.classList.toggle("Sets-Carousel-Img");
+        this.SetsCarouselPrevBtn.classList.toggle("Set-Btn");
+        this.SetsCarouselNextBtn.classList.toggle("Set-Btn");
+
+        this.SetsCarouselTitle.innerText = this.InputTitle;
+        this.SetsCarouselPrevBtn.innerText = "PREV";
+        this.SetsCarouselNextBtn.innerText = "NEXT";
+
+        this.SetsCarouselHolder.appendChild(this.SetsCarouselCon);
+        this.SetsCarouselCon.appendChild(this.SetsCarouselTitle);
+        this.SetsCarouselCon.appendChild(this.SetsCarouselImg);
+        this.SetsCarouselCon.appendChild(this.SetsCarouselBtnsCon);
+        this.SetsCarouselBtnsCon.appendChild(this.SetsCarouselPrevBtn);
+        this.SetsCarouselBtnsCon.appendChild(this.SetsCarouselNextBtn);
+
+        this.SetsCarouselImg.src = `assets/sets/${this.InputArray[this.count]}.jpg`;
+
+        this.SetsCarouselPrevBtn.addEventListener("click", () => {
+            this.count--;
+            if (this.count < 0) {
+                this.count = this.InputArray.length-1;
+                this.SetsCarouselImg.src = `assets/sets/${this.InputArray[this.count]}.jpg`;
+            } else {
+                this.SetsCarouselImg.src = `assets/sets/${this.InputArray[this.count]}.jpg`;
+            }
+        });
+
+        this.SetsCarouselNextBtn.addEventListener("click", () => {
+            this.count++;
+            if (this.count > this.InputArray.length-1) {
+                this.count = 0;
+                this.SetsCarouselImg.src = `assets/sets/${this.InputArray[this.count]}.jpg`;
+            } else {
+                this.SetsCarouselImg.src = `assets/sets/${this.InputArray[this.count]}.jpg`;
+            }
+        });
+    }
+}
+
+class CarouselNavigator {
+    constructor(NavigatorArray) {
+        this.NavigatorArray = NavigatorArray;
+
+        this.start = 0;
+        this.end = 5;
+
+        this.takeToStart = "";
+        this.takeToEnd = "";
+
+        this.ArrayCarouselSetsOne = ["HC1", "HC2"];
+        this.ArrayCarouselSetsTwo = ["MK1", "MK2"];
+        this.ArrayCarouselSetsThree = ["BT1", "BT2", "BT3"];
+        this.ArrayCarouselSetsFour = ["GR1", "GR2"];
+        this.ArrayCarouselSetsFive = ["A1", "A2"];
+        this.ArrayCarouselSetsSix = ["MF1", "MF3"];
+
+        this.ArrayOfArrays = [this.ArrayCarouselSetsOne, this.ArrayCarouselSetsTwo, this.ArrayCarouselSetsThree, this.ArrayCarouselSetsFour, this.ArrayCarouselSetsFive, this.ArrayCarouselSetsSix];
+
+        this.ArraysOfNames = ["SET FOUR", "SET FIVE", "SET SIX", "SET SEVEN", "SET EIGHT", "SET NINE"]
+
+        this.Display(this.start, this.end, this.NavigatorArray, this.ArrayOfArrays, this.ArraysOfNames);
+
+        this.CarouselNavPrev = document.querySelector(".CarouselPrev");
+        this.CarouselNavNext = document.querySelector(".CarouselNext");
+
+        this.CarouselNavPrev.addEventListener("click", () => {
+            this.takeToFront = this.NavigatorArray[this.NavigatorArray.length-1];
+            this.NavigatorArray = [this.takeToFront, ...this.NavigatorArray];
+            this.NavigatorArray = this.NavigatorArray.slice(0, -1);
+            this.takeToFrontArrays = this.ArrayOfArrays[this.ArrayOfArrays.length-1];
+            this.ArrayOfArrays = [this.takeToFrontArrays, ...this.ArrayOfArrays];
+            this.ArrayOfArrays = this.ArrayOfArrays.slice(0, -1);
+            this.takeToFrontNames = this.ArraysOfNames[this.ArraysOfNames.length-1];
+            this.ArraysOfNames = [this.takeToFrontNames, ...this.ArraysOfNames];
+            this.ArraysOfNames = this.ArraysOfNames.slice(0, -1);
+            this.Display(this.start, this.end, this.NavigatorArray, this.ArrayOfArrays, this.ArraysOfNames);
+        });
+
+        this.CarouselNavNext.addEventListener("click", () => {
+            this.takeToEnd = this.NavigatorArray[0];
+            this.NavigatorArray = this.NavigatorArray.slice(1);
+            this.NavigatorArray = [...this.NavigatorArray, this.takeToEnd];
+            this.takeToEndArrays = this.ArrayOfArrays[0];
+            this.ArrayOfArrays = this.ArrayOfArrays.slice(1);
+            this.ArrayOfArrays = [...this.ArrayOfArrays, this.takeToEndArrays];
+            this.takeToEndNames = this.ArraysOfNames[0];
+            this.ArraysOfNames = this.ArraysOfNames.slice(1);
+            this.ArraysOfNames = [...this.ArraysOfNames, this.takeToEndNames];
+            this.Display(this.start, this.end, this.NavigatorArray, this.ArrayOfArrays, this.ArraysOfNames);
+        });
+    }
+
+    Display(start, end, NavArr, ImgArr, NameArr) {
+        this.SetsCarouselHolder = document.querySelector(".Sets-Carousel-Holder");
+        this.SetsCarouselHolder.innerText = "";
+        for (let x = start; x < end; x++) {
+            let object = NavArr[x];
+            object = new CarouselSets(ImgArr[x], NameArr[x]);
+        }
+    }
+}
+
+const MinifigureImgArray = ["a0", "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10", "a11", "a12", "a13", "a14", "a15", "a16", "a17", "a18", "a19", "a20", "a21", "a22", "a23", "a24", "a25", "a26", "a27", "a28", "a29", "a30", "a31", "a32", "a33", "a34", "a35", "a36", "a37", "a38", "a39", "a40", "a41", "a42", "a43", "a44"];
+const MinifigureTitleArray = ["ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN", "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN", "NINETEEN", "TWENTY", "TWENTY ONE", "TWENTY TWO", "TWENTY THREE", "TWENTY FOUR", "TWENTY FIVE", "TWENTY SIX", "TWENTY SEVEN", "TWENTY EIGHT", "TWENTY NINE", "THIRTY", "THIRTY ONE", "THIRTY TWO", "THIRTY THREE", "THIRTY FOUR", "THIRTY FIVE", "THIRTY SIX", "THIRTY SEVEN", "THIRTY EIGHT", "THIRTY NINE", "FORTY", "FORTY ONE", "FORTY TWO", "FORTY THREE", "FORTY FOUR"];
+const Collection = new MinifigureSection(MinifigureTitleArray, MinifigureImgArray);
+
+let CarouselSetOne;
+let CarouselSetTwo;
+let CarouselSetThree;
+let CarouselSetFour;
+let CarouselSetFive;
+let CarouselSetSix;
+
+const ArrayOfObjects = [CarouselSetOne, CarouselSetTwo, CarouselSetThree, CarouselSetFour, CarouselSetFive];
+const CarouselNavArr = new CarouselNavigator(ArrayOfObjects);
