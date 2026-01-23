@@ -275,3 +275,33 @@ body {
     border-radius: 7px;
     margin: 5px;
 }
+
+.Footer {
+    border-top: black 3px solid;
+    padding: 20px;
+    font-family: monospace;
+}
+
+.First-Part {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.Second-Part p {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-left: 25px;
+}
+
+.Third-Part {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+footer div {
+    margin: 10px;
+}
+
+footer {
+    margin-bottom: 350px;
+}
