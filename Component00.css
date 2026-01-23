@@ -25,6 +25,7 @@ body {
     width: 100vw;
     align-items: center;
     border-bottom: black 3px solid;
+    z-index: 1000;
 }
 
 .First-Half h1 {
@@ -34,6 +35,7 @@ body {
     margin: 5px;
     border-radius: 3px;
     font-size: 25px;
+    cursor: pointer;
 }
 
 .Main-Content-Wrapper {
@@ -131,17 +133,6 @@ body {
     width: 110px;
 }
 
-.Show-More-Btn {
-    margin-top: 10px;
-    width: 100%;
-    border: black 3px solid;
-    border-radius: 7px;
-    padding: 10px;
-    background-color: white;
-    font-family: monospace;
-    font-weight: bold;
-}
-
 .Hide {
     display: none;
 }
@@ -172,10 +163,6 @@ body {
     border: none;
     margin-bottom: 0;
     display: none;
-}
-
-.Welcome-Img {
-    width: 400px;
 }
 
 .Hero-Container {
@@ -266,11 +253,11 @@ body {
     width: 200px;
     margin-bottom: 10px;
     margin-top: 10px;
-    border: black 3px solid;
+    border: black 2px solid;
 }
 
 .Sets-Carousel {
-    border: black 3px solid;
+    border: black 2px solid;
     padding: 10px;
     border-radius: 7px;
     margin: 5px;
@@ -304,4 +291,98 @@ footer div {
 
 footer {
     margin-bottom: 350px;
+}
+
+.Set-Btn-Carousel {
+    width: 80px;
+    padding: 4px;
+    margin: 3px;
+    background-color: white;
+    border: black 2px solid;
+    border-radius: 3px;
+    color: black;
+    font-family: monospace;
+    font-weight: bold;
+    transition: 0.6s;
+}
+
+.Set-Btn-Carousel:hover {
+    background-color: black;
+    color: white;
+}
+
+.Heads-Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Heads-Img {
+    width: 150px;
+    border: black 3px solid;
+    margin: 5px;
+    margin-top: 10px;
+}
+
+.Brick-Heads-Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Brick-Heads-Img {
+    width: 177px;
+    border: black 3px solid;
+    margin: 5px;
+}
+
+.Space-Filler-Con {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.Space-Filler {
+    width: 300px;
+}
+
+.Remove-Margin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.Upside-Down {
+    rotate: 180deg;
+}
+
+.Collective-Btn {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.Collective-Img {
+    width: 35px;
+    height: 35px;
+    margin: 1px;
+    margin-bottom: -2px;
+}
+
+.AboutUsCon {
+    border: black 3px solid;
+    width: 100%;
+    padding: 50px;
+    margin: 5px;
+    padding-top: 30px;
+    padding-bottom: 70px;
+}
+
+.AboutUsText {
+    font-size: 17px;
+    font-weight: 500;
+    font-family: monospace;
 }
