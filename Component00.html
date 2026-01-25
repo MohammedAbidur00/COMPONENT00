@@ -12,15 +12,31 @@
             <header>
                 <nav class="Header-Nav">
                     <div class="First-Half">
+                        <div>
+                            <button id="CollectiveBtn" class="Collective-Btn">
+                                <img class="Collective-Img" src="assets/other/Collective2.jpg">
+                            </button>
+                        </div>
                         <h1 id="Refresh">COMPONENT00</h1>
                     </div>
-                    <div>
-                        <button id="CollectiveBtn" class="Collective-Btn">
-                            <img class="Collective-Img" src="assets/other/Collective2.jpg">
+                    <div class="Second-Half">
+                        <p id="Home">HOME</p>
+                        <p id="About">ABOUT</p>
+                        <p id="Contact">CONTACT</p>
+                    </div>
+                    <div class="Menu-Container">
+                        <button id="MenuBtn" class="Menu-Btn">
+                            <img class="Menu-Btn-Img" src="assets/other/MenuImg.jpg">
                         </button>
                     </div>
                 </nav>
             </header>
+        </div>
+        <div class="Menu">
+            <h1>MENU</h1>
+            <p id="HomeMenu">HOME</p>
+            <p id="AboutMenu">ABOUT</p>
+            <p id="ContactMenu">CONTACT</p>
         </div>
         <div id="MainContentWrapper" class="Main-Content-Wrapper">
             <main>
@@ -69,15 +85,47 @@
                 <div class="Space-Filler-Con">
                     <img class="Space-Filler Upside-Down" src="assets/other/Roses.jpg">
                 </div>
-                <section class="Section-Container">
+                <section id="AboutSection" class="Section-Container">
                     <div class="Brick-Heads-Container"></div>
                 </section>
-                <section class="Section-Container">
-                    <div class="Section-Title">
-                        <h2>CONTACT US</h2>
+                <section id="ContactSection" class="Section-Container">
+                    <div class="Contact-And-Farewell">
+                        <div class="Contact-Us">
+                            <div class="Section-Title">
+                                <h2>CONTACT US</h2>
+                            </div>
+                            <div>
+                                <form onsubmit="event.preventDefault(); submitForm();">
+                                    <input class="contactInput" type="text" placeholder="Name">
+                                    <input class="contactInput" type="text" placeholder="Subject">
+                                    <input class="contactInput" type="text" placeholder="Phone">
+                                    <input class="contactInput" type="email" placeholder="Email">
+                                    <textarea class="contactInput" placeholder="Enter your message here"></textarea>
+                                    <button id="ContactButton">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="Contact-Us">
+                            <p class="Contact-Us-Text">Interested in working toghether with Component00 or have any question? I'd be happy to hear from you.</p>
+                            <p class="Contact-Us-Text">You can contact me using the form on the left or by using my email below.</p>
+                            <p class="Contact-Us-Text">My Email: Admin@Component00.com</p>
+                            <p class="Contact-Us-Text">Note: None of the products shown are actually owned by Component00, we are just curators.</p>
+                        </div>
                     </div>
-                    <div class="Brick-Heads-Container"></div>
                 </section>
+                <div class="Farewell">
+                    <div class="Farewell-Img-Con">
+                        <div>
+                            <img class="Farwell-Img" src="assets/minifigures/a0.jpg">
+                        </div>
+                        <div>
+                            <img class="Farwell-Img-Smaller" src="assets/brickheads/BH1.jpg">
+                        </div>
+                    </div>
+                    <div>
+                        <h1>FAREWELL...</h1>
+                    </div>
+                </div>
             </main>
         </div>
         <div id="FooterContentWrapper" class="Footer-Content-Wrapper">
@@ -86,8 +134,9 @@
                     <p>Copyright 2026 Component00. All rights reserved</p>
                 </div>
                 <div class="Second-Part">
-                    <p>Minifigure Collective</p>
-                    <p>Sets Collective</p>
+                    <p id="HomeFooter">Home</p>
+                    <p id="AboutFooter">About</p>
+                    <p id="ContactFooter">Contact</p>
                 </div>
                 <div class="Third-Part">
                     <p>Email: Admin@Component00.com</p>

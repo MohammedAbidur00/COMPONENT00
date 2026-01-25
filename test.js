@@ -65,7 +65,11 @@ class MinifigureSection {
     }
 
     Display(start, end, arrI, arrT) {
-        console.log("gh")
+        if (window.innerWidth > 500) {
+            end = 10;
+        } else {
+            end = 1;
+        }
         this.Minifigures = document.querySelector(".Minifigures");
         this.Minifigures.innerText = "";
         for (let x = start; x < end; x++) {
@@ -206,6 +210,11 @@ class CarouselNavigator {
     Display(start, end, NavArr, ImgArr, NameArr) {
         this.SetsCarouselHolder = document.querySelector(".Sets-Carousel-Holder");
         this.SetsCarouselHolder.innerText = "";
+        if (window.innerWidth > 500) {
+            end = 5;
+        } else {
+            end = 1;
+        }
         for (let x = start; x < end; x++) {
             let object = NavArr[x];
             object = new CarouselSets(ImgArr[x], NameArr[x]);
@@ -224,10 +233,16 @@ class WallOfSomething {
     }
 
     Display(hArr, Con, ImgS, ImgC) {
+        this.num = "";
+        if (window.innerWidth < 600) {
+            this.num = 6;
+        } else {
+            this.num = 7;
+        }
         this.text = "LEGO represents far more than a recreational pastime; it is a sophisticated medium where creativity, design, and engineering intersect with remarkable precision. I am especially drawn to the aesthetic depth of LEGO, as each set demonstrates a deliberate use of color, proportion, and structural harmony that closely mirrors principles found in architecture and industrial design. This visual and conceptual appeal becomes even more pronounced in the larger and more intricate sets, which transform the building process into an immersive and intellectually engaging experience.Beyond official releases, I hold a deep appreciation for custom LEGO sets created by master builders within the wider LEGO community. These creations often push the boundaries of scale, realism, and innovation, showcasing an exceptional level of technical skill and artistic vision. By reimagining familiar structures or inventing entirely original designs, master builders demonstrate the vast creative potential of LEGO as a platform for serious design work. Their ability to balance complexity with aesthetic coherence has been a continual source of inspiration.This sustained exposure to both official large-scale sets and community-driven custom builds ultimately motivated me to extend my interest beyond physical construction. It led me to create my own platform, referred to as website0, where I could document, showcase, and engage with LEGO-inspired ideas in a digital space. In this way, LEGO has influenced not only how I build, but also how I create, share, and communicate my appreciation for thoughtful design. \n\n\n- THE COMPONENT00 TEAM";
         this.HeadsCon = Con;
         for (let x = 0; x < hArr.length; x++) {
-            if (x === 7 && ImgC === "brickheads") {
+            if (x === this.num && ImgC === "brickheads") {
                 this.AboutUsCon = document.createElement("div");
                 this.AboutUsCon.classList.toggle("AboutUsCon");
                 this.AboutUsTextCon = document.createElement("div");
@@ -273,18 +288,102 @@ const ArrayOfObjects = [CarouselSetOne, CarouselSetTwo, CarouselSetThree, Carous
 const CarouselNavArr = new CarouselNavigator(ArrayOfObjects);
 
 const HeadsArr = ["H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8"]
-const BrickHeadsArr = ["BH1", "BH2", "BH3", "BH4", "BH5", "BH6", "BH7", "BH8", "BH9", "BH10", "BH11", "BH12", "BH13", "BH14"];
+let BrickHeadsArr;
+if (window.innerWidth < 600) {
+    BrickHeadsArr = ["BH1", "BH2", "BH3", "BH4", "BH6", "BH7", "BH8", "BH10", "BH11", "BH12", "BH13", "BH14"];
+} else {
+    BrickHeadsArr = ["BH1", "BH2", "BH3", "BH4", "BH5", "BH6", "BH7", "BH8", "BH9", "BH10", "BH11", "BH12", "BH13", "BH14"];
+}
 const WallOne = new WallOfSomething(HeadsArr, document.querySelector(".Heads-Container"), "Heads-Img", "heads");
 const WallTwo = new WallOfSomething(BrickHeadsArr, document.querySelector(".Brick-Heads-Container"), "Brick-Heads-Img", "brickheads");
 
 let collectiveBtn = document.getElementById("CollectiveBtn");
 let mainWrapper = document.getElementById("MainWrapper");
 let Refresh = document.getElementById("Refresh");
+let About = document.getElementById("About");
+let Contact = document.getElementById("Contact")
+let Home = document.getElementById("Home");
+let aboutMenu = document.getElementById("AboutMenu");
+let contactMenu = document.getElementById("ContactMenu")
+let homeMenu = document.getElementById("HomeMenu");
+let aboutFooter = document.getElementById("AboutFooter");
+let contactFooter = document.getElementById("ContactFooter")
+let homeFooter = document.getElementById("HomeFooter");
+let aboutSection = document.getElementById("AboutSection");
+let contactSection = document.getElementById("ContactSection");
+let menuBtn = document.getElementById("MenuBtn");
 
-collectiveBtn.addEventListener("click", () => {
+let Menu = document.querySelector(".Menu");
+
+document.addEventListener("scroll", () => {
+    if (window.scrollY <= 2000) {
+        Home.style.textDecoration = "underline black 3px solid";
+        About.style.textDecoration = "none";
+        Contact.style.textDecoration = "none";
+    } else if (window.scrollY >= 2300 && window.scrollY <= 3450) {
+        Home.style.textDecoration = "none";
+        About.style.textDecoration = "underline black 3px solid";
+        Contact.style.textDecoration = "none";
+    } else if (window.scrollY > 3450) {
+        Home.style.textDecoration = "none";
+        About.style.textDecoration = "none";
+        Contact.style.textDecoration = "underline black 3px solid";
+    }
+});
+
+Home.addEventListener("click", () => {
+    Home.style.textDecoration = "underline black 3px solid";
+    About.style.textDecoration = "none";
+    Contact.style.textDecoration = "none";
     mainWrapper.scrollIntoView({behavior: "smooth"})
-})
+});
+
+About.addEventListener("click", () => {
+    Home.style.textDecoration = "none";
+    About.style.textDecoration = "underline black 3px solid";
+    Contact.style.textDecoration = "none";
+    aboutSection.scrollIntoView({behavior: "smooth"})
+});
+
+Contact.addEventListener("click", () => {
+    Home.style.textDecoration = "none";
+    Contact.style.textDecoration = "underline black 3px solid";
+    About.style.textDecoration = "none";
+    contactSection.scrollIntoView({behavior: "smooth"})
+});
+
+homeMenu.addEventListener("click", () => {;
+    Menu.classList.toggle("Show");
+    mainWrapper.scrollIntoView({behavior: "smooth"})
+});
+
+aboutMenu.addEventListener("click", () => {
+    Menu.classList.toggle("Show");
+    aboutSection.scrollIntoView({behavior: "smooth"})
+});
+
+contactMenu.addEventListener("click", () => {
+    Menu.classList.toggle("Show");
+    contactSection.scrollIntoView({behavior: "smooth"})
+});
+
+homeFooter.addEventListener("click", () => {;
+    mainWrapper.scrollIntoView({behavior: "smooth"})
+});
+
+aboutFooter.addEventListener("click", () => {
+    aboutSection.scrollIntoView({behavior: "smooth"})
+});
+
+contactFooter.addEventListener("click", () => {
+    contactSection.scrollIntoView({behavior: "smooth"})
+});
 
 Refresh.addEventListener("click", () => {
     location.reload();
-})
+});
+
+menuBtn.addEventListener("click", () => {
+    console.log("gfhj")
+    Menu.classList.toggle("Show");
+});
