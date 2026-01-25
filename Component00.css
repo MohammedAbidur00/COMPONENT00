@@ -580,7 +580,7 @@ form button:hover {
     }
 
     .Sets-Img {
-        width: 290px;
+        width: 90%;
     }
 
     .SetDesCon {
@@ -604,12 +604,21 @@ form button:hover {
         border: black 3px black;
     }
 
+    .Heads-Img {
+        width: 44%;
+    }
+
     .Sets-Carousel-Img {
+        width: 100%;
         border: black 3px black;
     }
 
     .Brick-Heads-Img {
-        width: 155px;
+        width: 44%;
+    }
+
+    .AboutUsCon {
+        padding: 20px;
     }
 
     .Contact-And-Farewell {
