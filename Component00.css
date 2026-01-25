@@ -546,6 +546,7 @@ form button:hover {
 
 .Menu-Btn {
     display: none;
+    background-color: white;
 }
 
 .Menu-Btn-Img {
@@ -680,6 +681,7 @@ form button:hover {
     .Menu-Btn {
         display: block;
         border: none;
+        background-color: white;
     }
 
     .Menu-Container {
@@ -689,5 +691,10 @@ form button:hover {
     .Show {
         display: block;
         transition: 0.5s;
+    }
+
+    .Set-Btn:hover {
+        background-color: black;
+        color: white;
     }
 }
